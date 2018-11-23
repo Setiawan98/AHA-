@@ -1,5 +1,5 @@
 <?php
-
+// test laptop setiawan
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
