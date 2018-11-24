@@ -50032,7 +50032,7 @@ exports = module.exports = __webpack_require__(45)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50611,12 +50611,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'HomeLayout',
@@ -50625,7 +50619,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             input: {
                 username: "",
                 password: ""
-            }
+            },
+            data: {
+                username: '',
+                password: '',
+                nama: '',
+                alamat: '',
+                no_hp: '',
+                asal_sekolah: '',
+                email: ''
+            },
+            load: false
         };
     },
 
@@ -50633,8 +50637,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         login: function login() {
             if (this.input.username != "" && this.input.password != "") {
                 if (this.input.username == 'admin' && this.input.password == 'admin') {
-                    //    this.$emit("authenticated",true);
-                    //    this.$router.replace({ name: "Admin" });
                     alert('Hi admin!');
                 } else {
                     alert('The username and / or password is incorrect');
@@ -50642,6 +50644,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else {
                 alert('Field kosong');
             }
+        },
+        createUser: function createUser() {
+            var _this = this;
+
+            var url = "/api/user";
+            axios.post(url, this.data).then(function (response) {
+                _this.load = false;
+                _this.$router.push({ name: 'HomeLayout' });
+                alert('User berhasil ditambahkan ! ');
+            }).catch(function (error) {
+                _this.$toast.open({
+                    duration: 2000,
+                    message: error,
+                    position: 'is-bottom',
+                    type: 'is-danger',
+                    queue: false
+                });
+            });
         }
     }
 });
@@ -50799,30 +50819,34 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "modal-footer" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-success",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      _vm.login()
+            _c(
+              "div",
+              { staticClass: "modal-footer" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: {
+                      type: "button",
+                      "data-dismiss": "modal",
+                      to: { name: "Profile" }
                     }
-                  }
-                },
-                [_vm._v(" Login ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [_vm._v("Close")]
-              )
-            ])
+                  },
+                  [_vm._v("Login")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                )
+              ],
+              1
+            )
           ])
         ])
       ]
@@ -50832,60 +50856,76 @@ var render = function() {
       _c("div", { staticClass: "container my-auto" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-lg-8 mx-auto text-center" }, [
-            _c("form", [
-              _c("h2", { staticClass: "section-heading text-white" }, [
-                _vm._v("Registrasi Disini")
-              ]),
-              _vm._v(" "),
-              _c("img", {
-                attrs: {
-                  src: "./images/profil.png",
-                  width: "200",
-                  height: "200"
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    _vm.createUser()
+                    _vm.load = true
+                  }
                 }
-              }),
-              _c("br"),
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "button",
-                { staticClass: "btn btn-success", attrs: { type: "button" } },
-                [_vm._v("Add Image")]
-              ),
-              _vm._v(" "),
-              _vm._m(7),
-              _vm._v(" "),
-              _vm._m(8),
-              _vm._v(" "),
-              _vm._m(9),
-              _vm._v(" "),
-              _vm._m(10),
-              _vm._v(" "),
-              _vm._m(11),
-              _vm._v(" "),
-              _vm._m(12),
-              _vm._v(" "),
-              _vm._m(13),
-              _vm._v(" "),
-              _vm._m(14),
-              _vm._v(" "),
-              _vm._m(15),
-              _vm._v(" "),
-              _vm._m(16),
-              _vm._v(" "),
-              _vm._m(17)
-            ])
+              },
+              [
+                _c("h2", { staticClass: "section-heading text-white" }, [
+                  _vm._v("Registrasi Disini")
+                ]),
+                _vm._v(" "),
+                _c("img", {
+                  attrs: {
+                    src: "./images/profil.png",
+                    width: "200",
+                    height: "200"
+                  }
+                }),
+                _c("br"),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "btn btn-success", attrs: { type: "button" } },
+                  [_vm._v("Add Image")]
+                ),
+                _vm._v(" "),
+                _vm._m(7),
+                _vm._v(" "),
+                _vm._m(8),
+                _vm._v(" "),
+                _vm._m(9),
+                _vm._v(" "),
+                _vm._m(10),
+                _vm._v(" "),
+                _vm._m(11),
+                _vm._v(" "),
+                _vm._m(12),
+                _vm._v(" "),
+                _vm._m(13),
+                _vm._v(" "),
+                _vm._m(14),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("input", {
+                    staticClass: "button is-link",
+                    class: { "is-loading": _vm.load },
+                    attrs: { type: "submit", value: "Sign up" }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(15)
+              ]
+            )
           ])
         ])
       ])
     ]),
     _vm._v(" "),
-    _vm._m(18),
+    _vm._m(16),
     _vm._v(" "),
     _c("section", { staticClass: "bg-primary", attrs: { id: "team" } }, [
       _c("div", { staticClass: "container my-auto" }, [
         _c("div", { staticClass: "row" }, [
-          _vm._m(19),
+          _vm._m(17),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-sm-3" }, [
@@ -50902,7 +50942,7 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(20)
+                _vm._m(18)
               ])
             ]),
             _vm._v(" "),
@@ -50920,7 +50960,7 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(21)
+                _vm._m(19)
               ])
             ]),
             _vm._v(" "),
@@ -50938,7 +50978,7 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(22)
+                _vm._m(20)
               ])
             ]),
             _vm._v(" "),
@@ -50956,7 +50996,7 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(23)
+                _vm._m(21)
               ])
             ])
           ])
@@ -51116,12 +51156,7 @@ var staticRenderFns = [
       _c("br"),
       _c("input", {
         staticClass: "form-input",
-        attrs: {
-          type: "text",
-          name: "name",
-          id: "name",
-          placeholder: "Nama Anda"
-        }
+        attrs: { type: "text", name: "nama", placeholder: "Nama Anda" }
       })
     ])
   },
@@ -51132,7 +51167,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "form-group" }, [
       _c("input", {
         staticClass: "form-input",
-        attrs: { type: "number", name: "name", id: "no", placeholder: "No Hp" }
+        attrs: { type: "number", name: "no_hp", placeholder: "No Hp" }
       })
     ])
   },
@@ -51143,12 +51178,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "form-group" }, [
       _c("input", {
         staticClass: "form-input",
-        attrs: {
-          type: "text",
-          name: "name",
-          id: "alamat",
-          placeholder: "Alamat"
-        }
+        attrs: { type: "text", name: "alamat", placeholder: "Alamat" }
       })
     ])
   },
@@ -51161,8 +51191,7 @@ var staticRenderFns = [
         staticClass: "form-input",
         attrs: {
           type: "text",
-          name: "name",
-          id: "sekolah",
+          name: "asal_sekolah",
           placeholder: "Asal Sekolah"
         }
       })
@@ -51175,12 +51204,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "form-group" }, [
       _c("input", {
         staticClass: "form-input",
-        attrs: {
-          type: "email",
-          name: "email",
-          id: "email",
-          placeholder: "Email"
-        }
+        attrs: { type: "email", name: "email", placeholder: "Email" }
       })
     ])
   },
@@ -51191,12 +51215,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "form-group" }, [
       _c("input", {
         staticClass: "form-input",
-        attrs: {
-          type: "text",
-          name: "name",
-          id: "username",
-          placeholder: "Username"
-        }
+        attrs: { type: "text", name: "username", placeholder: "Username" }
       })
     ])
   },
@@ -51207,12 +51226,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "form-group" }, [
       _c("input", {
         staticClass: "form-input",
-        attrs: {
-          type: "text",
-          name: "password",
-          id: "password",
-          placeholder: "Password"
-        }
+        attrs: { type: "text", name: "password", placeholder: "Password" }
       }),
       _vm._v(" "),
       _c("span", {
@@ -51230,48 +51244,8 @@ var staticRenderFns = [
         staticClass: "form-input",
         attrs: {
           type: "password",
-          name: "re_password",
-          id: "re_password",
+          name: "cnf_psw",
           placeholder: "Repeat your password"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("input", {
-        staticClass: "agree-term",
-        attrs: { type: "checkbox", name: "agree-term", id: "agree-term" }
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "label-agree-term", attrs: { for: "agree-term" } },
-        [
-          _c("span", [_c("span")]),
-          _vm._v("I agree all statements in  "),
-          _c("a", { staticClass: "term-service", attrs: { href: "#" } }, [
-            _vm._v("Terms of service")
-          ])
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("input", {
-        staticClass: "form-submit",
-        attrs: {
-          type: "submit",
-          name: "submit",
-          id: "submit",
-          value: "Sign up"
         }
       })
     ])
@@ -51769,7 +51743,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            data: []
+            data: [],
+            info: {
+                username: '',
+                password: '',
+                nama: '',
+                alamat: '',
+                no_hp: '',
+                asal_sekolah: '',
+                email: ''
+            },
+            load: false
         };
     },
     created: function created() {
@@ -51786,6 +51770,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.data = response.data;
             }).catch(function (error) {
                 _this.$toast.open({
+                    duration: 2000,
+                    message: error,
+                    position: 'is-bottom',
+                    type: 'is-danger',
+                    queue: false
+                });
+            });
+        },
+        createUser: function createUser() {
+            var _this2 = this;
+
+            var url = "/api/user";
+            axios.post(url, this.info).then(function (response) {
+                _this2.load = false;
+                _this2.$router.push({ name: 'Profile' });
+                alert('User berhasil ditambahkan ! ');
+            }).catch(function (error) {
+                _this2.$toast.open({
                     duration: 2000,
                     message: error,
                     position: 'is-bottom',
@@ -52643,6 +52645,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -52655,9 +52658,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             load: false
         };
     },
-    created: function created() {
-        this.getData();
-    },
 
     methods: {
         createJadwal: function createJadwal() {
@@ -52667,6 +52667,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post(url, this.data).then(function (response) {
                 _this.load = false;
                 _this.$router.push({ name: 'Admin' });
+                alert('Jadwal berhasil ditambahkan ! ');
             }).catch(function (error) {
                 _this.$toast.open({
                     duration: 2000,
@@ -52676,7 +52677,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     queue: false
                 });
             });
-            alert('Jadwal berhasil ditambahkan ! ');
         }
     }
 });
@@ -52725,24 +52725,14 @@ var render = function() {
                   "li",
                   { staticClass: "nav-item" },
                   [
-                    _vm.authenticated
-                      ? _c(
-                          "router-link",
-                          {
-                            attrs: { to: "/login", replace: "" },
-                            nativeOn: {
-                              click: function($event) {
-                                _vm.logout()
-                              }
-                            }
-                          },
-                          [_vm._v("Logout")]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("router-view", {
-                      on: { authenticated: _vm.setAuthenticated }
-                    })
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link js-scroll-trigger",
+                        attrs: { to: { name: "HomeLayout" } }
+                      },
+                      [_vm._v("Homepage")]
+                    )
                   ],
                   1
                 )

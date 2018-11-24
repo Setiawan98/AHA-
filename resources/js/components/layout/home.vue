@@ -80,41 +80,37 @@
         <div class="container my-auto">
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
-                    <form>
+                    <form @submit.prevent="createUser();load = true">
                         <h2 class="section-heading text-white">Registrasi Disini</h2>
                         <img :src="'./images/profil.png'" width="200" height="200"><br><br>  
                         <button type="button" class="btn btn-success">Add Image</button>
                         <div class="form-group">
-                            <br><input type="text" class="form-input" name="name" id="name" placeholder="Nama Anda"/>
+                            <br><input type="text" class="form-input" name="nama" placeholder="Nama Anda"/>
                         </div>
                         <div class="form-group">
-                            <input type="number" class="form-input" name="name" id="no" placeholder="No Hp"/>
+                            <input type="number" class="form-input" name="no_hp" placeholder="No Hp"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="name" id="alamat" placeholder="Alamat"/>
+                            <input type="text" class="form-input" name="alamat" placeholder="Alamat"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="name" id="sekolah" placeholder="Asal Sekolah"/>
+                            <input type="text" class="form-input" name="asal_sekolah" placeholder="Asal Sekolah"/>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" name="email" id="email" placeholder="Email"/>
+                            <input type="email" class="form-input" name="email" placeholder="Email"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="name" id="username" placeholder="Username"/>
+                            <input type="text" class="form-input" name="username" placeholder="Username"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="password" id="password" placeholder="Password"/>
+                            <input type="text" class="form-input" name="password" placeholder="Password"/>
                         <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-input" name="re_password" id="re_password" placeholder="Repeat your password"/>
+                            <input type="password" class="form-input" name="cnf_psw" placeholder="Repeat your password"/>
                         </div>
                         <div class="form-group">
-                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
-                        </div>
-                            <div class="form-group">
-                            <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
+                            <input type="submit" class="button is-link" :class="{'is-loading':load}" value="Sign up"/>
                         </div>
                             <div class="form-group">
                             <input type="submit" name="submit" id="cancel" class="form-submit" value="Cancel"/>
@@ -232,10 +228,20 @@ export default {
     name: 'HomeLayout',
     data(){
         return{
-            input: {
+            input: ({
                 username: "",
                 password: "",
-            }
+            }),
+            data:({
+                username:'',
+                password:'',
+                nama:'',
+                alamat:'',
+                no_hp:'',
+                asal_sekolah:'',
+                email:''
+            }),
+            load:false,
         }
     },
     methods: {
@@ -249,7 +255,23 @@ export default {
                 } else {
                     alert('Field kosong');
                 }
-            }
+            },
+            createUser(){
+            let url="/api/user";
+            axios.post(url,this.data).then((response) => {
+                this.load = false;
+                this.$router.push({ name: 'HomeLayout' })
+                alert('User berhasil ditambahkan ! ');
+            }).catch(error => {
+                this.$toast.open({
+                    duration: 2000,
+                    message: error,
+                    position: 'is-bottom',
+                    type: 'is-danger',
+                    queue: false,
+                })
+            });
+        }
         }
     }
 </script>

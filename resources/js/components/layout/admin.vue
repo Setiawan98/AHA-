@@ -115,15 +115,13 @@ export default {
             load:false,
         }
     },
-    created(){
-        this.getData();
-    },
     methods:{
         createJadwal(){
             let url="/api/jadwal";
             axios.post(url,this.data).then((response) => {
                 this.load = false;
                 this.$router.push({ name: 'Admin' })
+                alert('Jadwal berhasil ditambahkan ! ');
             }).catch(error => {
                 this.$toast.open({
                     duration: 2000,
@@ -133,7 +131,6 @@ export default {
                     queue: false,
                 })
             });
-            alert('Jadwal berhasil ditambahkan ! ');
         }
     }
 }

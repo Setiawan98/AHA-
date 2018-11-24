@@ -252,7 +252,17 @@
 export default {
     data(){
         return{
-            data:[]
+            data:[],
+            info:({
+                username:'',
+                password:'',
+                nama:'',
+                alamat:'',
+                no_hp:'',
+                asal_sekolah:'',
+                email:''
+            }),
+            load:false,
         }
     },
     created(){
@@ -264,6 +274,22 @@ export default {
             axios.get(url).then((response) => {
                 console.log(response);
                 this.data = response.data;
+            }).catch(error => {
+                this.$toast.open({
+                    duration: 2000,
+                    message: error,
+                    position: 'is-bottom',
+                    type: 'is-danger',
+                    queue: false,
+                })
+            });
+        },
+        createUser(){
+            let url="/api/user";
+            axios.post(url,this.info).then((response) => {
+                this.load = false;
+                this.$router.push({ name: 'Profile' })
+                alert('User berhasil ditambahkan ! ');
             }).catch(error => {
                 this.$toast.open({
                     duration: 2000,
