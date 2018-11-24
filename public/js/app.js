@@ -51715,32 +51715,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            data: []
+        };
+    },
+    created: function created() {
+        this.getData();
+    },
+
+    methods: {
+        getData: function getData() {
+            var _this = this;
+
+            var url = "/api/jadwal";
+            axios.get(url).then(function (response) {
+                console.log(response);
+                _this.data = response.data;
+            }).catch(function (error) {
+                _this.$toast.open({
+                    duration: 2000,
+                    message: error,
+                    position: 'is-bottom',
+                    type: 'is-danger',
+                    queue: false
+                });
+            });
+        }
+    }
+});
 
 /***/ }),
 /* 52 */
@@ -51885,7 +51890,44 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(13),
+    _c("section", { attrs: { id: "jadwal" } }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-8 mx-auto text-center" }, [
+            _c("br"),
+            _vm._v(" "),
+            _c("h2", { staticClass: "section-heading" }, [
+              _vm._v("Jadwal Les yang tersedia  ")
+            ]),
+            _vm._v(" "),
+            _c("hr", { staticClass: "my-4" }),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "table",
+                { attrs: { cellspacing: "0" } },
+                [
+                  _vm._m(13),
+                  _vm._v(" "),
+                  _vm._l(_vm.data, function(data) {
+                    return _c("tbody", { key: data.nama_mapel }, [
+                      _c("tr", [
+                        _c("td", [_vm._v(_vm._s(data.nama_mapel))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(data.hari))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(data.jam))])
+                      ])
+                    ])
+                  })
+                ],
+                2
+              )
+            ])
+          ])
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c("br"),
     _c("br"),
@@ -52173,85 +52215,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { attrs: { id: "jadwal" } }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-lg-8 mx-auto text-center" }, [
-            _c("br"),
-            _vm._v(" "),
-            _c("h2", { staticClass: "section-heading" }, [
-              _vm._v("Jadwal Les yang tersedia  ")
-            ]),
-            _vm._v(" "),
-            _c("hr", { staticClass: "my-4" })
-          ]),
-          _vm._v(" "),
-          _c("table", { attrs: { cellspacing: "0" } }, [
-            _c("thead", [
-              _c("tr", [
-                _c("th", [_vm._v("No")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Mata Pelajaran")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Hari")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Jam")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tbody", [
-              _c("tr", [
-                _c("td", [_vm._v("1")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Matematika")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Senin")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("12.00-14.00")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("2")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Bahasa Indonesia")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Selasa")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("12.00-14.00")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("3")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Bahasa Inggris")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Rabu")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("12.00-14.00")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("4")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Matematika")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Kamis")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("14.00-16.00")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("5")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Bahasa Indonesia")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Jumat")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("14.00-16.00")])
-              ])
-            ])
-          ])
-        ])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Mata Pelajaran")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Hari")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Jam")])
       ])
     ])
   },
@@ -52635,6 +52605,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             load: false
         };
     },
+    created: function created() {
+        this.getData();
+    },
 
     methods: {
         createJadwal: function createJadwal() {
@@ -52653,6 +52626,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     queue: false
                 });
             });
+            alert('Jadwal berhasil ditambahkan ! ');
         }
     }
 });

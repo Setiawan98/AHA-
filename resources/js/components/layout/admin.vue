@@ -114,6 +114,9 @@ export default {
             load:false,
         }
     },
+    created(){
+        this.getData();
+    },
     methods:{
         createJadwal(){
             let url="/api/jadwal";
@@ -129,6 +132,7 @@ export default {
                     queue: false,
                 })
             });
+            alert('Jadwal berhasil ditambahkan ! ');
         }
     }
 }
