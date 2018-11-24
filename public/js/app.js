@@ -50032,7 +50032,7 @@ exports = module.exports = __webpack_require__(45)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50615,8 +50615,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'HomeLayout',
@@ -50633,8 +50631,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         login: function login() {
             if (this.input.username != "" && this.input.password != "") {
                 if (this.input.username == 'admin' && this.input.password == 'admin') {
-                    //    this.$emit("authenticated",true);
-                    //    this.$router.replace({ name: "Admin" });
                     alert('Hi admin!');
                 } else {
                     alert('The username and / or password is incorrect');
@@ -50799,30 +50795,34 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "modal-footer" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-success",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      _vm.login()
+            _c(
+              "div",
+              { staticClass: "modal-footer" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: {
+                      type: "button",
+                      "data-dismiss": "modal",
+                      to: { name: "Profile" }
                     }
-                  }
-                },
-                [_vm._v(" Login ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [_vm._v("Close")]
-              )
-            ])
+                  },
+                  [_vm._v("Login")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                )
+              ],
+              1
+            )
           ])
         ])
       ]
@@ -51380,7 +51380,7 @@ var staticRenderFns = [
       _c("p", [
         _vm._v("Sinta "),
         _c("br"),
-        _vm._v("\r\n                                  Founder of AHA!")
+        _vm._v("\n                                  Founder of AHA!")
       ]),
       _vm._v(" "),
       _c("p", [
@@ -51400,7 +51400,7 @@ var staticRenderFns = [
       _c("p", [
         _vm._v("Setiawan "),
         _c("br"),
-        _vm._v("\r\n                                  Founder of AHA!")
+        _vm._v("\n                                  Founder of AHA!")
       ]),
       _vm._v(" "),
       _c("p", [
@@ -51420,7 +51420,7 @@ var staticRenderFns = [
       _c("p", [
         _vm._v("Christian "),
         _c("br"),
-        _vm._v("\r\n                                  Founder of AHA!!")
+        _vm._v("\n                                  Founder of AHA!!")
       ]),
       _vm._v(" "),
       _c("p", [
@@ -51440,7 +51440,7 @@ var staticRenderFns = [
       _c("p", [
         _vm._v("Rio "),
         _c("br"),
-        _vm._v("\r\n                                  Founder of AHA!!")
+        _vm._v("\n                                  Founder of AHA!!")
       ]),
       _vm._v(" "),
       _c("p", [
@@ -52694,6 +52694,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post(url, this.data).then(function (response) {
                 _this.load = false;
                 _this.$router.push({ name: 'Admin' });
+                alert('Jadwal berhasil ditambahkan ! ');
             }).catch(function (error) {
                 _this.$toast.open({
                     duration: 2000,
@@ -52751,24 +52752,14 @@ var render = function() {
                   "li",
                   { staticClass: "nav-item" },
                   [
-                    _vm.authenticated
-                      ? _c(
-                          "router-link",
-                          {
-                            attrs: { to: "/login", replace: "" },
-                            nativeOn: {
-                              click: function($event) {
-                                _vm.logout()
-                              }
-                            }
-                          },
-                          [_vm._v("Logout")]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("router-view", {
-                      on: { authenticated: _vm.setAuthenticated }
-                    })
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link js-scroll-trigger",
+                        attrs: { to: { name: "HomeLayout" } }
+                      },
+                      [_vm._v("Homepage")]
+                    )
                   ],
                   1
                 )

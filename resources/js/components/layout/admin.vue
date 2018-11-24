@@ -1,4 +1,3 @@
-
 <template>
     <div>
         <!-- Navigation -->
@@ -10,15 +9,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#verif">Verifikasi</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#mapel">TambahJadwal</a>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link js-scroll-trigger" :to="{name: 'HomeLayout'}">Homepage</router-link>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#verif">Verifikasi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#mapel">TambahJadwal</a>
+                        </li>
+                        <li class="nav-item">
+                            <router-link class="nav-link js-scroll-trigger" :to="{name: 'HomeLayout'}">Homepage</router-link>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -53,7 +52,7 @@
                             <td>087589455612</td>
                             <td>200000</td>
                             <td>Belum Lunas</td>
-                            <td><button type="button" class="btn btn-danger">Delete</button></td> 
+                            <td><button type="button" class="btn btn-danger">Delete</button></td>
                             <td><button type="button" class="btn btn-success">Verifikasi</button></td>
                             </tr>
                             <tr>
@@ -121,6 +120,7 @@ export default {
             axios.post(url,this.data).then((response) => {
                 this.load = false;
                 this.$router.push({ name: 'Admin' })
+                alert('Jadwal berhasil ditambahkan ! ');
             }).catch(error => {
                 this.$toast.open({
                     duration: 2000,
@@ -130,6 +130,7 @@ export default {
                     queue: false,
                 })
             });
+            
         }
     }
 }
