@@ -25,17 +25,16 @@
 
         <!-- Verifikasi User -->
         <section class="bg-primary" id="verif">
-            <div>
+            <div class="col-lg-8 mx-auto text-center">
                 <div class="row">
                     <div class="col-lg-8 mx-auto text-center">
-                    <br>
-                    <h2 class="section-heading text-white">Data Siswa Bimbel AHA!</h2>
-                        <hr class="light my-4">
+                        <br>
+                        <h2 class="section-heading text-white">Data Siswa Bimbel AHA! </h2>
+                            <hr class="light my-4">
                     </div>
                 </div>
-                <div style="padding-left: 18%">
-                    <table cellspacing='0'>
-                        <thead>
+            <table cellspacing='0'>
+                         <thead>
                             <tr>
                             <th>No</th>
                             <th>Nama</th>
@@ -75,8 +74,7 @@
                             <td><button type="button" class="btn btn-success">Verifikasi</button></td>
                             </tr>
                         </tbody>
-                    </table>  
-                </div> 
+                    </table>
             </div>
         </section>
 
@@ -87,11 +85,11 @@
                     <h2 class="section-heading">Tambahkan Mata Pelajaran</h2>
                     <img class="src-image" :src="'./images/mapel.png'" />
                     <hr class="my-4">
-                    <label for="mapel">Mata Pelajaran</label>
+                    <label for="mapel">Mata Pelajaran </label>
                     <input type="text" class="form-input" name="mapel" id="mapel" placeholder="Sejarah"/><br><br>
-                    <label for="mapel">Hari Les</label>
+                    <label for="mapel"> Hari Les</label>
                     <input type="text" class="form-input" name="mapel" id="mapel" placeholder="Selasa"/><br><br>
-                    <label for="mapel">Waktu</label>
+                    <label for="mapel">Waktu </label>
                     <input type="text" class="form-input" name="mapel" id="mapel" placeholder="19.00"/>
                     <br><br>
                     <button type="button" class="btn btn-success">Simpan</button>
