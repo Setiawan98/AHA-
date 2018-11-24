@@ -49660,7 +49660,7 @@ module.exports = function spread(callback) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(13);
 
 
-
+//import VueSweetalert2 from 'vue-sweetalert2';
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]);
 
 var HomeLayout = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('HomeLayout', __webpack_require__(42));
@@ -50032,7 +50032,7 @@ exports = module.exports = __webpack_require__(45)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50615,8 +50615,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'HomeLayout',
+    data: function data() {
+        return {
+            input: {
+                username: "",
+                password: ""
+            }
+        };
+    },
+
+    methods: {
+        login: function login() {
+            if (this.input.username != "" && this.input.password != "") {
+                if (this.input.username == 'admin' && this.input.password == 'admin') {
+                    //    this.$emit("authenticated",true);
+                    //    this.$router.replace({ name: "Admin" });
+                    alert('Hi admin!');
+                } else {
+                    alert('The username and / or password is incorrect');
+                }
+            } else {
+                alert('Field kosong');
+            }
+        }
+    }
+});
 
 /***/ }),
 /* 49 */
@@ -50705,40 +50733,96 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _vm._m(7),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                    _vm._v("Username")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.input.username,
+                        expression: "input.username"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "username",
+                      placeholder: "Username"
+                    },
+                    domProps: { value: _vm.input.username },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.input, "username", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
                 _vm._v(" "),
-                _vm._m(8)
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                    _vm._v("Password")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.input.password,
+                        expression: "input.password"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "password",
+                      name: "password",
+                      placeholder: "Password"
+                    },
+                    domProps: { value: _vm.input.password },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.input, "password", $event.target.value)
+                      }
+                    }
+                  })
+                ])
               ])
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "modal-footer" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-success",
-                    attrs: {
-                      type: "button",
-                      "data-dismiss": "modal",
-                      to: { name: "Profile" }
+            _c("div", { staticClass: "modal-footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.login()
                     }
-                  },
-                  [_vm._v("Login")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [_vm._v("Close")]
-                )
-              ],
-              1
-            )
+                  }
+                },
+                [_vm._v(" Login ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("Close")]
+              )
+            ])
           ])
         ])
       ]
@@ -50769,6 +50853,10 @@ var render = function() {
                 [_vm._v("Add Image")]
               ),
               _vm._v(" "),
+              _vm._m(7),
+              _vm._v(" "),
+              _vm._m(8),
+              _vm._v(" "),
               _vm._m(9),
               _vm._v(" "),
               _vm._m(10),
@@ -50785,23 +50873,19 @@ var render = function() {
               _vm._v(" "),
               _vm._m(16),
               _vm._v(" "),
-              _vm._m(17),
-              _vm._v(" "),
-              _vm._m(18),
-              _vm._v(" "),
-              _vm._m(19)
+              _vm._m(17)
             ])
           ])
         ])
       ])
     ]),
     _vm._v(" "),
-    _vm._m(20),
+    _vm._m(18),
     _vm._v(" "),
     _c("section", { staticClass: "bg-primary", attrs: { id: "team" } }, [
       _c("div", { staticClass: "container my-auto" }, [
         _c("div", { staticClass: "row" }, [
-          _vm._m(21),
+          _vm._m(19),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-sm-3" }, [
@@ -50818,7 +50902,7 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(22)
+                _vm._m(20)
               ])
             ]),
             _vm._v(" "),
@@ -50836,7 +50920,7 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(23)
+                _vm._m(21)
               ])
             ]),
             _vm._v(" "),
@@ -50854,7 +50938,7 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(24)
+                _vm._m(22)
               ])
             ]),
             _vm._v(" "),
@@ -50872,7 +50956,7 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(25)
+                _vm._m(23)
               ])
             ])
           ])
@@ -51022,40 +51106,6 @@ var staticRenderFns = [
       ),
       _vm._v(" "),
       _c("h4", { staticClass: "modal-title" }, [_vm._v("Silahkan Login")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-        _vm._v("Username")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", id: "username", placeholder: "Username" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-        _vm._v("Password")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          type: "password",
-          id: "exampleInputPassword1",
-          placeholder: "Password"
-        }
-      })
     ])
   },
   function() {
@@ -52675,14 +52725,24 @@ var render = function() {
                   "li",
                   { staticClass: "nav-item" },
                   [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link js-scroll-trigger",
-                        attrs: { to: { name: "HomeLayout" } }
-                      },
-                      [_vm._v("Homepage")]
-                    )
+                    _vm.authenticated
+                      ? _c(
+                          "router-link",
+                          {
+                            attrs: { to: "/login", replace: "" },
+                            nativeOn: {
+                              click: function($event) {
+                                _vm.logout()
+                              }
+                            }
+                          },
+                          [_vm._v("Logout")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("router-view", {
+                      on: { authenticated: _vm.setAuthenticated }
+                    })
                   ],
                   1
                 )

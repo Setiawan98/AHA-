@@ -1,3 +1,4 @@
+
 <template>
     <div>
         <!-- Navigation -->
@@ -52,7 +53,7 @@
                             <td>087589455612</td>
                             <td>200000</td>
                             <td>Belum Lunas</td>
-                            <td><button type="button" class="btn btn-danger">Delete</button></td>
+                            <td><button type="button" class="btn btn-danger">Delete</button></td> 
                             <td><button type="button" class="btn btn-success">Verifikasi</button></td>
                             </tr>
                             <tr>
