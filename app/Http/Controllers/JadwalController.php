@@ -16,8 +16,8 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jadwals = Jadwal::orderBy('id_jadwal','ASC')->get();
-        return view('jadwalCRUD.index',compact('jadwals'));
+        $jadwals = Jadwal::all();
+        return $jadwals;
     }
 
     /**
@@ -25,10 +25,10 @@ class JadwalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('jadwalCRUD.create');
-    }
+    // public function create()
+    // {
+    //     return view('jadwalCRUD.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -38,14 +38,13 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,
-        ['nama_mapel' => 'required',
-         'hari' => 'required',
-         'jam' => 'required']);
-         
-        Jadwal::create($request->all());
-        return redirect()->route('Jadwal.index')->with('success','Item created successfully');
+        $jadwals = new Jadwal();
+        $jadwals->nama_mapel = $request->nama_mapel;
+        $jadwals->hari = $request->hari;
+        $jadwals->jam = $request->jam;
+        $jadwals->save();
 
+        return response()->json(['status'=>'200','jadwal'=>$jadwals]);
     }
 
     /**
@@ -54,11 +53,11 @@ class JadwalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id_mapel)
-    {
-        $jadwals=Jadwal::find($id_mapel);
-        return view ('jadwalCRUD.show',compact('jadwals'));
-    }
+    // public function show($id_mapel)
+    // {
+    //     $jadwals=Jadwal::find($id_mapel);
+    //     return view ('jadwalCRUD.show',compact('jadwals'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -66,12 +65,12 @@ class JadwalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-        $jadwals = Jadwal::find($id);
-        return view('jadwalCRUD.edit',compact('jadwals'));
-    }
+    // public function edit($id)
+    // {
+    //     //
+    //     $jadwals = Jadwal::find($id);
+    //     return view('jadwalCRUD.edit',compact('jadwals'));
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -80,14 +79,14 @@ class JadwalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_mapel)
-    {
-        //
-        $this->validate($request, ['nama_mapel' => 'required']);
+    // public function update(Request $request, $id_mapel)
+    // {
+    //     //
+    //     $this->validate($request, ['nama_mapel' => 'required']);
 
-        Jadwal::find($id_mapel)->update($request->all());
-        return redirect()->route('Jadwal.index')->with('success','Item Updated Successfully');
-    }
+    //     Jadwal::find($id_mapel)->update($request->all());
+    //     return redirect()->route('Jadwal.index')->with('success','Item Updated Successfully');
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -95,9 +94,9 @@ class JadwalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        Jadwal::find($id)->delete();
-        return redirect()->route('Jadwal.index')->with('success','Item Deleted Successfully');
-    }
+    // public function destroy($id)
+    // {
+    //     Jadwal::find($id)->delete();
+    //     return redirect()->route('Jadwal.index')->with('success','Item Deleted Successfully');
+    // }
 }

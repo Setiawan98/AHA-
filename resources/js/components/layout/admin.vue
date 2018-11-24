@@ -86,17 +86,20 @@ import swal from 'sweetalert';
         <section id="mapel">
             <div>
                 <div class="col-lg-8 mx-auto text-center">
+                    <form @submit.prevent="createJadwal();load = true">
                     <h2 class="section-heading">Tambahkan Mata Pelajaran</h2>
                     <img class="src-image" :src="'./images/mapel.png'" />
                     <hr class="my-4">
-                    <label for="mapel">Mata Pelajaran </label>
-                    <input type="text" class="form-input" name="mapel" id="mapel" placeholder="Sejarah"/><br><br>
-                    <label for="mapel"> Hari Les</label>
-                    <input type="text" class="form-input" name="mapel" id="mapel" placeholder="Selasa"/><br><br>
-                    <label for="mapel">Waktu </label>
-                    <input type="text" class="form-input" name="mapel" id="mapel" placeholder="19.00"/>
-                    <br><br>
-                    <button type="button" class="btn btn-success">Simpan</button>
+                    
+                        <label for="mapel">Mata Pelajaran </label>
+                        <input type="text" v-model=data.nama_mapel class="form-input" name="nama_mapel"/><br><br>
+                        <label for="mapel"> Hari Les</label>
+                        <input type="text" v-model=data.hari class="form-input" name="hari"/><br><br>
+                        <label for="mapel">Waktu </label>
+                        <input type="text" v-model=data.jam class="form-input" name="jam"/>
+                        <br><br>
+                        <button type="submit" class="button is-link" :class="{'is-loading':load}">Simpan</button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -105,28 +108,32 @@ import swal from 'sweetalert';
 </template>
 <script>
 export default {
-        // name: 'Admin',
-        // data(){
-        //     return{
-        //     authenticated: false,
-        //         mockAccount: {
-        //             username: "admin",
-        //             password: "admin"
-        //         }
-        //     }
-        // },
-        // mounted() {
-        //     if(!this.authenticated) {
-        //         this.$router.replace({ name: "HomeLayout" });
-        //     }
-        // },
-        // methods: {
-        //     setAuthenticated(status) {
-        //         this.authenticated = status;
-        //     },
-        //     logout() {
-        //         this.authenticated = false;
-        //     }
-        // }
+    data(){
+        return{
+            data:({
+                nama_mapel:'',
+                hari:'',
+                jam:''
+            }),
+            load:false,
+        }
+    },
+    methods:{
+        createJadwal(){
+            let url="/api/jadwal";
+            axios.post(url,this.data).then((response) => {
+                this.load = false;
+                this.$router.push({ name: 'Admin' })
+            }).catch(error => {
+                this.$toast.open({
+                    duration: 2000,
+                    message: error,
+                    position: 'is-bottom',
+                    type: 'is-danger',
+                    queue: false,
+                })
+            });
+        }
     }
+}
 </script>

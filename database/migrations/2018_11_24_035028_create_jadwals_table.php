@@ -18,7 +18,6 @@ class CreateJadwalsTable extends Migration
             $table->string('nama_mapel')->unique();
             $table->string('hari');
             $table->string('jam');
-            $table->timestamps();
         });
     }
 

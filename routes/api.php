@@ -17,4 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/admin','JadwalController@index');
+Route::post('/jadwal','JadwalController@store');

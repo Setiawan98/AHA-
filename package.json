@@ -22,6 +22,7 @@
     "dependencies": {
         "sweetalert": "^2.1.2",
         "vue-router": "^3.0.1",
-        "vue-sweetalert2": "^1.5.9"
+        "vue-sweetalert2": "^1.5.9",
+        "save": "^2.3.2"
     }
 }
