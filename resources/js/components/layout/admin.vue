@@ -1,4 +1,3 @@
-import swal from 'sweetalert';
 
 <template>
     <div>
@@ -18,9 +17,7 @@ import swal from 'sweetalert';
                         <a class="nav-link js-scroll-trigger" href="#mapel">TambahJadwal</a>
                     </li>
                     <li class="nav-item">
-                        <!-- <router-link class="nav-link js-scroll-trigger" :to="{name: 'HomeLayout'}">Homepage</router-link> -->
-                        <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
-                        <router-view @authenticated="setAuthenticated" />
+                        <router-link class="nav-link js-scroll-trigger" :to="{name: 'HomeLayout'}">Homepage</router-link>
                     </li>
                     </ul>
                 </div>

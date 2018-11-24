@@ -68,9 +68,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" v-on:click="login()"> Login </button>
-                    <!-- <router-link v-if="authenticated" v-bind:to="{name: 'Admin'}"> </router-link> -->
-                    <!-- <router-link type="button" class="btn btn-success" data-dismiss="modal" :to="{name: 'Profile'}">Login</router-link> -->
+                    <router-link type="button" class="btn btn-success" data-dismiss="modal" :to="{name: 'Profile'}">Login</router-link>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -244,8 +242,6 @@ export default {
             login() {
                 if(this.input.username != "" && this.input.password != "") {
                     if(this.input.username == 'admin'  && this.input.password == 'admin' ) {
-                    //    this.$emit("authenticated",true);
-                    //    this.$router.replace({ name: "Admin" });
                         alert('Hi admin!');
                     } else {
                         alert('The username and / or password is incorrect');
