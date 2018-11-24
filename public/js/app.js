@@ -51330,7 +51330,7 @@ var staticRenderFns = [
       _c("p", [
         _vm._v("Sinta "),
         _c("br"),
-        _vm._v("\n                                  Founder of AHA!")
+        _vm._v("\r\n                                  Founder of AHA!")
       ]),
       _vm._v(" "),
       _c("p", [
@@ -51350,7 +51350,7 @@ var staticRenderFns = [
       _c("p", [
         _vm._v("Setiawan "),
         _c("br"),
-        _vm._v("\n                                  Founder of AHA!")
+        _vm._v("\r\n                                  Founder of AHA!")
       ]),
       _vm._v(" "),
       _c("p", [
@@ -51370,7 +51370,7 @@ var staticRenderFns = [
       _c("p", [
         _vm._v("Christian "),
         _c("br"),
-        _vm._v("\n                                  Founder of AHA!!")
+        _vm._v("\r\n                                  Founder of AHA!!")
       ]),
       _vm._v(" "),
       _c("p", [
@@ -51390,7 +51390,7 @@ var staticRenderFns = [
       _c("p", [
         _vm._v("Rio "),
         _c("br"),
-        _vm._v("\n                                  Founder of AHA!!")
+        _vm._v("\r\n                                  Founder of AHA!!")
       ]),
       _vm._v(" "),
       _c("p", [
@@ -52620,8 +52620,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            data: {
+                nama_mapel: '',
+                hari: '',
+                jam: ''
+            },
+            load: false
+        };
+    },
+
+    methods: {
+        createJadwal: function createJadwal() {
+            var _this = this;
+
+            var url = "/api/jadwal";
+            axios.post(url, this.data).then(function (response) {
+                _this.load = false;
+                _this.$router.push({ name: 'Admin' });
+            }).catch(function (error) {
+                _this.$toast.open({
+                    duration: 2000,
+                    message: error,
+                    position: 'is-bottom',
+                    type: 'is-danger',
+                    queue: false
+                });
+            });
+        }
+    }
+});
 
 /***/ }),
 /* 55 */
@@ -52690,64 +52724,120 @@ var render = function() {
     _c("section", { attrs: { id: "mapel" } }, [
       _c("div", [
         _c("div", { staticClass: "col-lg-8 mx-auto text-center" }, [
-          _c("h2", { staticClass: "section-heading" }, [
-            _vm._v("Tambahkan Mata Pelajaran")
-          ]),
-          _vm._v(" "),
-          _c("img", {
-            staticClass: "src-image",
-            attrs: { src: "./images/mapel.png" }
-          }),
-          _vm._v(" "),
-          _c("hr", { staticClass: "my-4" }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "mapel" } }, [_vm._v("Mata Pelajaran ")]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-input",
-            attrs: {
-              type: "text",
-              name: "mapel",
-              id: "mapel",
-              placeholder: "Sejarah"
-            }
-          }),
-          _c("br"),
-          _c("br"),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "mapel" } }, [_vm._v(" Hari Les")]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-input",
-            attrs: {
-              type: "text",
-              name: "mapel",
-              id: "mapel",
-              placeholder: "Selasa"
-            }
-          }),
-          _c("br"),
-          _c("br"),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "mapel" } }, [_vm._v("Waktu ")]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-input",
-            attrs: {
-              type: "text",
-              name: "mapel",
-              id: "mapel",
-              placeholder: "19.00"
-            }
-          }),
-          _vm._v(" "),
-          _c("br"),
-          _c("br"),
-          _vm._v(" "),
           _c(
-            "button",
-            { staticClass: "btn btn-success", attrs: { type: "button" } },
-            [_vm._v("Simpan")]
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  _vm.createJadwal()
+                  _vm.load = true
+                }
+              }
+            },
+            [
+              _c("h2", { staticClass: "section-heading" }, [
+                _vm._v("Tambahkan Mata Pelajaran")
+              ]),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "src-image",
+                attrs: { src: "./images/mapel.png" }
+              }),
+              _vm._v(" "),
+              _c("hr", { staticClass: "my-4" }),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "mapel" } }, [
+                _vm._v("Mata Pelajaran ")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.data.nama_mapel,
+                    expression: "data.nama_mapel"
+                  }
+                ],
+                staticClass: "form-input",
+                attrs: { type: "text", name: "nama_mapel" },
+                domProps: { value: _vm.data.nama_mapel },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.data, "nama_mapel", $event.target.value)
+                  }
+                }
+              }),
+              _c("br"),
+              _c("br"),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "mapel" } }, [_vm._v(" Hari Les")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.data.hari,
+                    expression: "data.hari"
+                  }
+                ],
+                staticClass: "form-input",
+                attrs: { type: "text", name: "hari" },
+                domProps: { value: _vm.data.hari },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.data, "hari", $event.target.value)
+                  }
+                }
+              }),
+              _c("br"),
+              _c("br"),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "mapel" } }, [_vm._v("Waktu ")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.data.jam,
+                    expression: "data.jam"
+                  }
+                ],
+                staticClass: "form-input",
+                attrs: { type: "text", name: "jam" },
+                domProps: { value: _vm.data.jam },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.data, "jam", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("br"),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "button is-link",
+                  class: { "is-loading": _vm.load },
+                  attrs: { type: "submit" }
+                },
+                [_vm._v("Simpan")]
+              )
+            ]
           )
         ])
       ])

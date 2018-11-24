@@ -82,18 +82,19 @@
         <section id="mapel">
             <div>
                 <div class="col-lg-8 mx-auto text-center">
+                    <form @submit.prevent="createJadwal();load = true">
                     <h2 class="section-heading">Tambahkan Mata Pelajaran</h2>
                     <img class="src-image" :src="'./images/mapel.png'" />
                     <hr class="my-4">
-                    <form action="./api/jadwal" method="POST" @submit="createJadwal()">
+                    
                         <label for="mapel">Mata Pelajaran </label>
-                        <input type="text" class="form-input" name="nama_mapel" id="nama_mapel"/><br><br>
+                        <input type="text" v-model=data.nama_mapel class="form-input" name="nama_mapel"/><br><br>
                         <label for="mapel"> Hari Les</label>
-                        <input type="text" class="form-input" name="hari" id="hari"/><br><br>
+                        <input type="text" v-model=data.hari class="form-input" name="hari"/><br><br>
                         <label for="mapel">Waktu </label>
-                        <input type="text" class="form-input" name="jam" id="jam"/>
+                        <input type="text" v-model=data.jam class="form-input" name="jam"/>
                         <br><br>
-                        <button type="submit" class="btn btn-success">Simpan</button>
+                        <button type="submit" class="button is-link" :class="{'is-loading':load}">Simpan</button>
                     </form>
                 </div>
             </div>
@@ -105,16 +106,29 @@
 export default {
     data(){
         return{
-            form: new Form({
+            data:({
                 nama_mapel:'',
                 hari:'',
                 jam:''
-            })
+            }),
+            load:false,
         }
     },
     methods:{
         createJadwal(){
-            alert('sukses');
+            let url="/api/jadwal";
+            axios.post(url,this.data).then((response) => {
+                this.load = false;
+                this.$router.push({ name: 'Admin' })
+            }).catch(error => {
+                this.$toast.open({
+                    duration: 2000,
+                    message: error,
+                    position: 'is-bottom',
+                    type: 'is-danger',
+                    queue: false,
+                })
+            });
         }
     }
 }
