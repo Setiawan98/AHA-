@@ -85,14 +85,16 @@
                     <h2 class="section-heading">Tambahkan Mata Pelajaran</h2>
                     <img class="src-image" :src="'./images/mapel.png'" />
                     <hr class="my-4">
-                    <label for="mapel">Mata Pelajaran </label>
-                    <input type="text" class="form-input" name="mapel" id="mapel" placeholder="Sejarah"/><br><br>
-                    <label for="mapel"> Hari Les</label>
-                    <input type="text" class="form-input" name="mapel" id="mapel" placeholder="Selasa"/><br><br>
-                    <label for="mapel">Waktu </label>
-                    <input type="text" class="form-input" name="mapel" id="mapel" placeholder="19.00"/>
-                    <br><br>
-                    <button type="button" class="btn btn-success">Simpan</button>
+                    <form>
+                        <label for="mapel">Mata Pelajaran </label>
+                        <input type="text" class="form-input" name="mapel" id="mapel"/><br><br>
+                        <label for="mapel"> Hari Les</label>
+                        <input type="text" class="form-input" name="hari" id="hari"/><br><br>
+                        <label for="mapel">Waktu </label>
+                        <input type="text" class="form-input" name="jam" id="jam"/>
+                        <br><br>
+                        <button type="button" class="btn btn-success">Simpan</button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -101,6 +103,21 @@
 </template>
 <script>
 export default {
-    
+    data(){
+        return{
+            data:{
+                mapel:'',
+                hari:'',
+                jam:''            
+            },
+            load: false,
+        }
+    },
+    methods:{
+        addMessage(){
+            let url="/api/admin";
+            axios.post()
+        }
+    }
 }
 </script>
