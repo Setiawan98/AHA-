@@ -143,51 +143,27 @@
                     <br>
                     <h2 class="section-heading">Jadwal Les yang tersedia  </h2>
                     <hr class="my-4">
-                    </div>
+                    <div>
                     <table cellspacing='0'>
                         <thead>
                             <tr>
-                            <th>No</th>
                             <th>Mata Pelajaran</th>
                             <th>Hari</th>
                             <th>Jam</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody v-for="data in data" :key="data.nama_mapel">
                             <tr>
-                            <td>1</td>
-                            <td>Matematika</td>
-                            <td>Senin</td>
-                            <td>12.00-14.00</td>
-                            </tr>
-                            <tr>
-                            <td>2</td>
-                            <td>Bahasa Indonesia</td>
-                            <td>Selasa</td>
-                            <td>12.00-14.00</td>
-                            </tr>
-                            <tr>
-                            <td>3</td>
-                            <td>Bahasa Inggris</td>
-                            <td>Rabu</td>
-                            <td>12.00-14.00</td>
-                            </tr>
-                            <tr>
-                            <td>4</td>
-                            <td>Matematika</td>
-                            <td>Kamis</td>
-                            <td>14.00-16.00</td>
-                            </tr>
-                            <tr>
-                            <td>5</td>
-                            <td>Bahasa Indonesia</td>
-                            <td>Jumat</td>
-                            <td>14.00-16.00</td>
+                            <td>{{data.nama_mapel}}</td>
+                            <td>{{data.hari}}</td>
+                            <td>{{data.jam}}</td>
                             </tr>
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
+        </div>
         </section>
         <br><br> 
 
@@ -274,6 +250,56 @@
 </template>
 <script>
 export default {
-    
+    data(){
+        return{
+            data:[],
+            info:({
+                username:'',
+                password:'',
+                nama:'',
+                alamat:'',
+                no_hp:'',
+                asal_sekolah:'',
+                email:''
+            }),
+            load:false,
+        }
+    },
+    created(){
+        this.getData();
+    },
+    methods:{
+        getData(){
+            let url="/api/jadwal";
+            axios.get(url).then((response) => {
+                console.log(response);
+                this.data = response.data;
+            }).catch(error => {
+                this.$toast.open({
+                    duration: 2000,
+                    message: error,
+                    position: 'is-bottom',
+                    type: 'is-danger',
+                    queue: false,
+                })
+            });
+        },
+        createUser(){
+            let url="/api/user";
+            axios.post(url,this.info).then((response) => {
+                this.load = false;
+                this.$router.push({ name: 'Profile' })
+                alert('User berhasil ditambahkan ! ');
+            }).catch(error => {
+                this.$toast.open({
+                    duration: 2000,
+                    message: error,
+                    position: 'is-bottom',
+                    type: 'is-danger',
+                    queue: false,
+                })
+            });
+        }
+    }
 }
 </script>

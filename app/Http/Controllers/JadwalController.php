@@ -79,14 +79,17 @@ class JadwalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function update(Request $request, $id_mapel)
-    // {
-    //     //
-    //     $this->validate($request, ['nama_mapel' => 'required']);
 
-    //     Jadwal::find($id_mapel)->update($request->all());
-    //     return redirect()->route('Jadwal.index')->with('success','Item Updated Successfully');
-    // }
+    public function update(Request $request, $id_jadwal)
+    {
+        $jadwals = Jadwal::findOrFail($id_jadwal);
+        $jadwals->nama_mapel = $request->nama_mapel;
+        $jadwals->hari = $request->hari;
+        $jadwals->jam = $request->jam;
+        $jadwals->save();
+
+        return response()->json(['status'=>'200','jadwal'=>$jadwals]);
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -94,9 +97,15 @@ class JadwalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function destroy($id)
-    // {
-    //     Jadwal::find($id)->delete();
-    //     return redirect()->route('Jadwal.index')->with('success','Item Deleted Successfully');
-    // }
+    public function destroy($id_jadwal)
+    {
+        $jadwals = Jadwal::findOrFail($id_jadwal);
+        if($jadwals->count() > 0){
+            $jadwals->delete();
+            return response()->json(['status'=>'200','msg'=>'berhasil dihapus']);
+        }
+        else{
+            return response()->json(['status'=>'400','msg'=>'gagal menghapus']);
+        }
+    }
 }

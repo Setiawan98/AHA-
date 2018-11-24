@@ -15,8 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id_user','ASC')->get();
-        return view('userCRUD.index',compact('users'));
+        $users = User::all();
+        return $users;
     }
 
     /**
@@ -37,24 +37,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,
-        ['username' => 'required',
-         'password' => 'required',
-         'nama' => 'required',
-         'alamat' => 'required',
-         'no_hp' => 'required',
-         'asal_sekolah' => 'required',
-         'email' => 'required']);
+            $users = new User();
+            $users->username = $request->username;
+            $users->password = $request->password;
+            $users->nama = $request->nama;
+            $users->alamat = $request->alamat;
+            $users->no_hp = $request->no_hp;
+            $users->asal_sekolah = $request->asal_sekolah;
+            $users->email = $request->email;
+            $users->save();
 
-         if($request->password != $request->cnf_psw)
-		{
-			return redirect()->back()->with('alert', 'Password harus sama');
-        }
-        else
-        {
-            User::create($request->all());
-            return redirect()->route('User.index')->with('success','Item created successfully');
-        }
+            return response()->json(['status'=>'200','user'=>$users]);
        
     }
 
