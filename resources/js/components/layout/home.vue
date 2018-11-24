@@ -59,16 +59,18 @@
                         <img class="tengah" :src="'./images/login.png'" width="200" height="200">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Username</label>
-                            <input type="text" class="form-control" id="username" placeholder="Username">
+                            <input type="text" class="form-control" name="username" v-model="input.username" placeholder="Username">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <input type="password" class="form-control" name="password" v-model="input.password" placeholder="Password">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <router-link type="button" class="btn btn-success" data-dismiss="modal" :to="{name: 'Profile'}">Login</router-link>
+                    <button type="button" class="btn btn-success" v-on:click="login()"> Login </button>
+                    <!-- <router-link v-if="authenticated" v-bind:to="{name: 'Admin'}"> </router-link> -->
+                    <!-- <router-link type="button" class="btn btn-success" data-dismiss="modal" :to="{name: 'Profile'}">Login</router-link> -->
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -229,9 +231,33 @@
 
 <script>
 export default {
- 
-}
+    name: 'HomeLayout',
+    data(){
+        return{
+            input: {
+                username: "",
+                password: "",
+            }
+        }
+    },
+    methods: {
+            login() {
+                if(this.input.username != "" && this.input.password != "") {
+                    if(this.input.username == 'admin'  && this.input.password == 'admin' ) {
+                    //    this.$emit("authenticated",true);
+                    //    this.$router.replace({ name: "Admin" });
+                        alert('Hi admin!');
+                    } else {
+                        alert('The username and / or password is incorrect');
+                    }
+                } else {
+                    alert('Field kosong');
+                }
+            }
+        }
+    }
 </script>
+
 
 <style>
 

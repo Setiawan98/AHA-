@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+//import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(VueRouter)
 
 const HomeLayout = Vue.component('HomeLayout',require('./components/layout/home.vue'));

@@ -20,6 +20,8 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
-        "vue-router": "^3.0.1"
+        "sweetalert": "^2.1.2",
+        "vue-router": "^3.0.1",
+        "vue-sweetalert2": "^1.5.9"
     }
 }

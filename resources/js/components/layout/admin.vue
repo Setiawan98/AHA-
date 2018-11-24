@@ -1,3 +1,5 @@
+import swal from 'sweetalert';
+
 <template>
     <div>
         <!-- Navigation -->
@@ -16,7 +18,9 @@
                         <a class="nav-link js-scroll-trigger" href="#mapel">TambahJadwal</a>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link js-scroll-trigger" :to="{name: 'HomeLayout'}">Homepage</router-link>
+                        <!-- <router-link class="nav-link js-scroll-trigger" :to="{name: 'HomeLayout'}">Homepage</router-link> -->
+                        <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
+                        <router-view @authenticated="setAuthenticated" />
                     </li>
                     </ul>
                 </div>
@@ -52,7 +56,7 @@
                             <td>087589455612</td>
                             <td>200000</td>
                             <td>Belum Lunas</td>
-                            <td><button type="button" class="btn btn-danger">Delete</button></td>
+                            <td><button type="button" class="btn btn-danger">Delete</button></td> 
                             <td><button type="button" class="btn btn-success">Verifikasi</button></td>
                             </tr>
                             <tr>
@@ -101,6 +105,28 @@
 </template>
 <script>
 export default {
-    
-}
+        // name: 'Admin',
+        // data(){
+        //     return{
+        //     authenticated: false,
+        //         mockAccount: {
+        //             username: "admin",
+        //             password: "admin"
+        //         }
+        //     }
+        // },
+        // mounted() {
+        //     if(!this.authenticated) {
+        //         this.$router.replace({ name: "HomeLayout" });
+        //     }
+        // },
+        // methods: {
+        //     setAuthenticated(status) {
+        //         this.authenticated = status;
+        //     },
+        //     logout() {
+        //         this.authenticated = false;
+        //     }
+        // }
+    }
 </script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Providers\SweetAlertServiceProvider;
 use App\Jadwal;
 use Alert;
 class JadwalController extends Controller
