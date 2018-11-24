@@ -37,14 +37,11 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,
-        ['nama_mapel' => 'required',
-         'hari' => 'required',
-         'jam' => 'required']);
-         
-        Jadwal::create($request->all());
-        return redirect()->route('Jadwal.index')->with('success','Item created successfully');
-
+        return Jadwal::create([
+            'nama_mapel' => $request['nama_mapel'],
+            'hari' => $request['hari'],
+            'jam' => $request['jam'],
+            ]);
     }
 
     /**
