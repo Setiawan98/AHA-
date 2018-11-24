@@ -13,3 +13,7 @@ npm-debug.log
 yarn-error.log
 .env
 .phpunit.result.cache
+app/Jadwal.php
+database/migrations/2014_10_12_000000_create_users_table.php
+database/migrations/2014_10_12_100000_create_password_resets_table.php
+database/migrations/2018_11_23_150044_create_jadwals_table.php

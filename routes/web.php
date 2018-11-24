@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('app');
 });
+
+Route::get('/admin', function () {
+    return view('app');
+});
+
+Route::get('/profile', function () {
+    return view('app');
+});
