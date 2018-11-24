@@ -84,8 +84,8 @@
         <section id="mapel">
             <div>
                 <div class="col-lg-8 mx-auto text-center">
-                    <img class="src-image" :src="'./images/mapel.png'" />
                     <h2 class="section-heading">Tambahkan Mata Pelajaran</h2>
+                    <img class="src-image" :src="'./images/mapel.png'" />
                     <hr class="my-4">
                     <label for="mapel">Mata Pelajaran</label>
                     <input type="text" class="form-input" name="mapel" id="mapel" placeholder="Sejarah"/><br><br>
