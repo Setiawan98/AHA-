@@ -51858,6 +51858,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -52294,7 +52296,7 @@ var staticRenderFns = [
       _c("input", {
         staticClass: "form-input",
         attrs: {
-          type: "number",
+          type: "text",
           name: "name",
           id: "no",
           placeholder: "08123456789"
@@ -52342,7 +52344,7 @@ var staticRenderFns = [
       _c("input", {
         staticClass: "form-input",
         attrs: {
-          type: "text",
+          type: "password",
           name: "password",
           id: "password",
           placeholder: "Your password"

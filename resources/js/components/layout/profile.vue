@@ -111,7 +111,7 @@
                         <br><input type="text" class="form-input" name="name" id="name" placeholder="Setiawan"/>
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-input" name="name" id="no" placeholder="08123456789"/>
+                        <input type="text" class="form-input" name="name" id="no" placeholder="08123456789"/>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-input" name="name" id="alamat" placeholder="Jl. Tambak Bayan 5"/>
@@ -120,7 +120,7 @@
                         <input type="text" class="form-input" name="name" id="sekolah" placeholder="SMA Bopkri 1"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-input" name="password" id="password" placeholder="Your password"/>
+                        <input type="password" class="form-input" name="password" id="password" placeholder="Your password"/>
                         <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                     </div>
                     <div class="form-group">
@@ -231,6 +231,8 @@
                         <div class="form-group">
                         <label for="sel1">Pilih Mata Pelajaran</label>
                         <select class="form-control" id="sel1">
+                            <!-- @v-for="data in data" :key="data.nama_mapel"
+                            <option> {{ data.nama_mapel}} </option> -->
                             <option>Bahasa Indonesia</option>
                             <option>Fisika</option>
                             <option>Bahasa Inggris</option>
