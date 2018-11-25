@@ -50,7 +50,7 @@ class UserController extends Controller
             return response()->json(['status'=>'200','user'=>$users]);
        
     }
-
+//
     /**
      * Display the specified resource.
      *
