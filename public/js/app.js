@@ -50032,7 +50032,7 @@ exports = module.exports = __webpack_require__(45)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50386,6 +50386,9 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
 //
 //
 //
@@ -50613,10 +50616,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'HomeLayout',
     data: function data() {
         return {
+            selectedFile: null,
             input: {
                 username: "",
                 password: ""
@@ -50628,13 +50634,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 alamat: '',
                 no_hp: '',
                 asal_sekolah: '',
-                email: ''
+                email: '',
+                image: null
             },
             load: false
         };
     },
 
     methods: {
+        onFileSelected: function onFileSelected(event) {
+            this.selectedFile = event.target.files[0];
+        },
         login: function login() {
             if (this.input.username != "" && this.input.password != "") {
                 if (this.input.username == 'admin' && this.input.password == 'admin') {
@@ -50649,21 +50659,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         createUser: function createUser() {
             var _this = this;
 
-            var url = "/api/user";
-            axios.post(url, this.data).then(function (response) {
-                _this.load = false;
-                _this.$router.push({ name: 'HomeLayout' });
-                alert('User berhasil ditambahkan ! ');
-                _this.data = '';
-            }).catch(function (error) {
-                _this.$toast.open({
-                    duration: 2000,
-                    message: error,
-                    position: 'is-bottom',
-                    type: 'is-danger',
-                    queue: false
-                });
-            });
+            if (this.data.nama == '' || this.data.no_hp == '' || this.data.alamat == '' || this.data.asal_sekolah == '' || this.data.email == '' || this.data.username == '' || this.data.password == '' || this.data.cnf_psw == '') {
+                alert('Semua field harus diisi');
+            } else {
+                if (this.data.password != this.data.cnf_psw) {
+                    alert('Password tdk sesuai, silahkan masukan kembali');
+                    this.data.password = '';
+                    this.data.cnf_psw = '';
+                } else {
+                    var url = "/api/user";
+                    // const fd = new FormData();
+                    // fd.append('img',this.selectedFile,this.selectedFile.name)
+                    // this.data.image=fd;
+                    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, this.data).then(function (response) {
+                        console.log(response);
+                        _this.load = false;
+                        _this.$router.push({ name: 'HomeLayout' });
+                        alert('User berhasil ditambahkan ! ');
+                        _this.data = '';
+                    }).catch(function (error) {
+                        _this.$toast.open({
+                            duration: 2000,
+                            message: error,
+                            position: 'is-bottom',
+                            type: 'is-danger',
+                            queue: false
+                        });
+                    });
+                }
+            }
         }
     }
 });
@@ -50884,9 +50908,24 @@ var render = function() {
                 _c("br"),
                 _c("br"),
                 _vm._v(" "),
+                _c("input", {
+                  ref: "fileInput",
+                  staticStyle: { display: "none" },
+                  attrs: { type: "file" },
+                  on: { change: _vm.onFileSelected }
+                }),
+                _vm._v(" "),
                 _c(
                   "button",
-                  { staticClass: "btn btn-success", attrs: { type: "button" } },
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.$refs.fileInput.click()
+                      }
+                    }
+                  },
                   [_vm._v("Add Image")]
                 ),
                 _vm._v(" "),
@@ -51851,6 +51890,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -52091,11 +52139,27 @@ var render = function() {
                   _c(
                     "select",
                     { staticClass: "form-control", attrs: { id: "sel1" } },
-                    _vm._l(_vm.data, function(data) {
-                      return _c("option", { key: data.nama_mapel }, [
-                        _vm._v(_vm._s(data.nama_mapel))
-                      ])
-                    })
+                    [
+                      _vm._v("\n<<<<<<< HEAD\n                            "),
+                      _vm._l(_vm.data, function(data) {
+                        return _c("option", { key: data.nama_mapel }, [
+                          _vm._v(_vm._s(data.nama_mapel))
+                        ])
+                      }),
+                      _vm._v("\n=======\n                            "),
+                      _vm._v(" "),
+                      _c("option", [_vm._v("Bahasa Indonesia")]),
+                      _vm._v(" "),
+                      _c("option", [_vm._v("Fisika")]),
+                      _vm._v(" "),
+                      _c("option", [_vm._v("Bahasa Inggris")]),
+                      _vm._v(" "),
+                      _c("option", [_vm._v("Matematika")]),
+                      _vm._v(
+                        "\n>>>>>>> d574bc85c497a29a5131827ee00fcec6e7acf2cf\n                        "
+                      )
+                    ],
+                    2
                   )
                 ])
               ])
@@ -52294,7 +52358,7 @@ var staticRenderFns = [
       _c("input", {
         staticClass: "form-input",
         attrs: {
-          type: "number",
+          type: "text",
           name: "name",
           id: "no",
           placeholder: "08123456789"
@@ -52342,7 +52406,7 @@ var staticRenderFns = [
       _c("input", {
         staticClass: "form-input",
         attrs: {
-          type: "text",
+          type: "password",
           name: "password",
           id: "password",
           placeholder: "Your password"

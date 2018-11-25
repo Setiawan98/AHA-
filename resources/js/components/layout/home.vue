@@ -83,7 +83,8 @@
                     <form @submit.prevent="createUser();load = true">
                         <h2 class="section-heading text-white">Registrasi Disini</h2>
                         <img :src="'./images/profil.png'" width="200" height="200"><br><br>  
-                        <button type="button" class="btn btn-success">Add Image</button>
+                        <input style="display: none" type="file"  @change="onFileSelected" ref="fileInput">
+                        <button type="button" class="btn btn-success" @click="$refs.fileInput.click()" >Add Image</button>
                         <div class="form-group">
                             <br><input type="text" v-model=data.nama class="form-input" name="nama" placeholder="Nama Anda"/>
                         </div>
@@ -225,10 +226,13 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     name: 'HomeLayout',
     data(){
         return{
+            selectedFile:null,
             input: ({
                 username: "",
                 password: "",
@@ -241,11 +245,15 @@ export default {
                 no_hp:'',
                 asal_sekolah:'',
                 email:'',
+                image:null,
             }),
             load:false,
         }
     },
     methods: {
+            onFileSelected(event){
+                this.selectedFile = event.target.files[0]
+            },
             login() {
                 if(this.input.username != "" && this.input.password != "") {
                     if(this.input.username == 'admin'  && this.input.password == 'admin' ) {
@@ -258,24 +266,52 @@ export default {
                 }
             },
             createUser(){
-            let url="/api/user";
-            axios.post(url,this.data).then((response) => {
-                this.load = false;
-                this.$router.push({ name: 'HomeLayout' })
-                alert('User berhasil ditambahkan ! ');
-                this.data='';
-            }).catch(error => {
-                this.$toast.open({
-                    duration: 2000,
-                    message: error,
-                    position: 'is-bottom',
-                    type: 'is-danger',
-                    queue: false,
-                })
-            });
-        }
-        }
+                if(this.data.nama == ''
+                    || this.data.no_hp == ''
+                    || this.data.alamat ==''
+                    || this.data.asal_sekolah == ''
+                    || this.data.email ==''
+                    || this.data.username == ''
+                    || this.data.password ==''
+                    || this.data.cnf_psw == ''
+                    )
+                {
+                    alert('Semua field harus diisi');
+                }
+                else
+                {
+                    if(this.data.password != this.data.cnf_psw)
+                    {
+                        alert('Password tdk sesuai, silahkan masukan kembali');
+                        this.data.password='';
+                        this.data.cnf_psw='';
+                    }
+                    else
+                    {
+                        let url="/api/user";
+                        // const fd = new FormData();
+                        // fd.append('img',this.selectedFile,this.selectedFile.name)
+                        // this.data.image=fd;
+                        axios.post(url,this.data).then((response) => {
+                            console.log(response)
+                            this.load = false;
+                            this.$router.push({ name: 'HomeLayout' })
+                            alert('User berhasil ditambahkan ! ');
+                            this.data='';
+                        }).catch(error => { 
+                            this.$toast.open({
+                                duration: 2000,
+                                message: error,
+                                position: 'is-bottom',
+                                type: 'is-danger',
+                                queue: false,
+                            })
+                        });
+                    }
+                }    
+            }
     }
+}
 </script>
 
 

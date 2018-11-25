@@ -22,3 +22,4 @@ Route::get('/admin', function () {
 Route::get('/profile', function () {
     return view('app');
 });
+//

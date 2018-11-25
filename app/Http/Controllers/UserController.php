@@ -45,6 +45,7 @@ class UserController extends Controller
             $users->no_hp = $request->no_hp;
             $users->asal_sekolah = $request->asal_sekolah;
             $users->email = $request->email;
+            // $users->image = $request->image;
             $users->save();
 
             return response()->json(['status'=>'200','user'=>$users]);
