@@ -22,3 +22,5 @@ Route::get('/jadwal/{id}','JadwalController@show');
 Route::post('/jadwal','JadwalController@store');
 Route::get('/user','UserController@index');
 Route::post('/user','UserController@store');
+
+//HALO SINTA APA KABAR TUGAS KITA?? :D
