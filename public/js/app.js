@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,7 +70,7 @@
 "use strict";
 
 
-var bind = __webpack_require__(6);
+var bind = __webpack_require__(7);
 var isBuffer = __webpack_require__(22);
 
 /*global toString:true*/
@@ -533,10 +533,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(8);
+    adapter = __webpack_require__(9);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(8);
+    adapter = __webpack_require__(9);
   }
   return adapter;
 }
@@ -611,7 +611,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
 /* 4 */
@@ -13531,6 +13531,12 @@ return jQuery;
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__(21);
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -13546,7 +13552,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -13736,7 +13742,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13747,7 +13753,7 @@ var settle = __webpack_require__(25);
 var buildURL = __webpack_require__(27);
 var parseHeaders = __webpack_require__(28);
 var isURLSameOrigin = __webpack_require__(29);
-var createError = __webpack_require__(9);
+var createError = __webpack_require__(10);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(30);
 
 module.exports = function xhrAdapter(config) {
@@ -13923,7 +13929,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13948,7 +13954,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13960,7 +13966,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13986,7 +13992,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24952,7 +24958,7 @@ module.exports = Vue;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(40).setImmediate))
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27583,37 +27589,37 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(15);
+__webpack_require__(16);
 module.exports = __webpack_require__(58);
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__routes__ = __webpack_require__(39);
 
-__webpack_require__(16);
+__webpack_require__(17);
 
 
-window.Vue = __webpack_require__(12);
-window.VueRouter = __webpack_require__(13).default;
+window.Vue = __webpack_require__(13);
+window.VueRouter = __webpack_require__(14).default;
 
 var AppLayout = Vue.component('app-layout', __webpack_require__(56));
 
 new Vue(Vue.util.extend({ router: __WEBPACK_IMPORTED_MODULE_0__routes__["a" /* default */] }, AppLayout)).$mount('#mainLayout');
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(17);
+window._ = __webpack_require__(18);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -27625,7 +27631,7 @@ try {
   window.Popper = __webpack_require__(4).default;
   window.$ = window.jQuery = __webpack_require__(5);
 
-  __webpack_require__(19);
+  __webpack_require__(20);
 } catch (e) {}
 
 /**
@@ -27634,7 +27640,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(20);
+window.axios = __webpack_require__(6);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -27670,7 +27676,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -44782,10 +44788,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(18)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(19)(module)))
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -44813,7 +44819,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -48763,12 +48769,6 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(21);
-
-/***/ }),
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -48776,7 +48776,7 @@ module.exports = __webpack_require__(21);
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(6);
+var bind = __webpack_require__(7);
 var Axios = __webpack_require__(23);
 var defaults = __webpack_require__(3);
 
@@ -48811,9 +48811,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(11);
+axios.Cancel = __webpack_require__(12);
 axios.CancelToken = __webpack_require__(37);
-axios.isCancel = __webpack_require__(10);
+axios.isCancel = __webpack_require__(11);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -48966,7 +48966,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(9);
+var createError = __webpack_require__(10);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -49399,7 +49399,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(34);
-var isCancel = __webpack_require__(10);
+var isCancel = __webpack_require__(11);
 var defaults = __webpack_require__(3);
 var isAbsoluteURL = __webpack_require__(35);
 var combineURLs = __webpack_require__(36);
@@ -49559,7 +49559,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(11);
+var Cancel = __webpack_require__(12);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -49655,9 +49655,9 @@ module.exports = function spread(callback) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(14);
 
 
 //import VueSweetalert2 from 'vue-sweetalert2';
@@ -49944,7 +49944,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(8)))
 
 /***/ }),
 /* 42 */
@@ -50386,7 +50386,7 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
@@ -51890,15 +51890,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -52139,27 +52130,11 @@ var render = function() {
                   _c(
                     "select",
                     { staticClass: "form-control", attrs: { id: "sel1" } },
-                    [
-                      _vm._v("\n<<<<<<< HEAD\n                            "),
-                      _vm._l(_vm.data, function(data) {
-                        return _c("option", { key: data.nama_mapel }, [
-                          _vm._v(_vm._s(data.nama_mapel))
-                        ])
-                      }),
-                      _vm._v("\n=======\n                            "),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("Bahasa Indonesia")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("Fisika")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("Bahasa Inggris")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("Matematika")]),
-                      _vm._v(
-                        "\n>>>>>>> d574bc85c497a29a5131827ee00fcec6e7acf2cf\n                        "
-                      )
-                    ],
-                    2
+                    _vm._l(_vm.data, function(data) {
+                      return _c("option", { key: data.nama_mapel }, [
+                        _vm._v(_vm._s(data.nama_mapel))
+                      ])
+                    })
                   )
                 ])
               ])
@@ -52773,12 +52748,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            data: {
+            data: {},
+            datas: {
                 nama_mapel: '',
                 hari: '',
                 jam: ''
             },
-            user: [],
+            users: [],
             load: false
         };
     },
@@ -52808,11 +52784,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             var url = "/api/jadwal";
-            axios.post(url, this.data).then(function (response) {
+            axios.post(url, this.datas).then(function (response) {
                 _this2.load = false;
                 _this2.$router.push({ name: 'Admin' });
                 alert('Jadwal berhasil ditambahkan ! ');
-                _this2.data = '';
+                _this2.datas = '';
             }).catch(function (error) {
                 _this2.$toast.open({
                     duration: 2000,
@@ -52898,20 +52874,20 @@ var render = function() {
           [
             _vm._m(4),
             _vm._v(" "),
-            _vm._l(_vm.data, function(user) {
-              return _c("tbody", { key: user.username }, [
+            _vm._l(_vm.data, function(users) {
+              return _c("tbody", { key: users.username }, [
                 _c("tr", [
-                  _c("td", [_vm._v(_vm._s(user.nama))]),
+                  _c("td", [_vm._v(_vm._s(users.nama))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(user.no_hp))]),
+                  _c("td", [_vm._v(_vm._s(users.no_hp))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(user.asal_sekolah))]),
+                  _c("td", [_vm._v(_vm._s(users.asal_sekolah))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(user.alamat))]),
+                  _c("td", [_vm._v(_vm._s(users.alamat))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(user.username))]),
+                  _c("td", [_vm._v(_vm._s(users.username))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(user.password))]),
+                  _c("td", [_vm._v(_vm._s(users.password))]),
                   _vm._v(" "),
                   _vm._m(5, true)
                 ])
@@ -52958,19 +52934,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.data.nama_mapel,
-                    expression: "data.nama_mapel"
+                    value: _vm.datas.nama_mapel,
+                    expression: "datas.nama_mapel"
                   }
                 ],
                 staticClass: "form-input",
                 attrs: { type: "text", name: "nama_mapel" },
-                domProps: { value: _vm.data.nama_mapel },
+                domProps: { value: _vm.datas.nama_mapel },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.data, "nama_mapel", $event.target.value)
+                    _vm.$set(_vm.datas, "nama_mapel", $event.target.value)
                   }
                 }
               }),
@@ -52984,19 +52960,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.data.hari,
-                    expression: "data.hari"
+                    value: _vm.datas.hari,
+                    expression: "datas.hari"
                   }
                 ],
                 staticClass: "form-input",
                 attrs: { type: "text", name: "hari" },
-                domProps: { value: _vm.data.hari },
+                domProps: { value: _vm.datas.hari },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.data, "hari", $event.target.value)
+                    _vm.$set(_vm.datas, "hari", $event.target.value)
                   }
                 }
               }),
@@ -53010,19 +52986,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.data.jam,
-                    expression: "data.jam"
+                    value: _vm.datas.jam,
+                    expression: "datas.jam"
                   }
                 ],
                 staticClass: "form-input",
                 attrs: { type: "text", name: "jam" },
-                domProps: { value: _vm.data.jam },
+                domProps: { value: _vm.datas.jam },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.data, "jam", $event.target.value)
+                    _vm.$set(_vm.datas, "jam", $event.target.value)
                   }
                 }
               }),

@@ -45,14 +45,14 @@
                             <th></th>
                             </tr>
                         </thead>
-                        <tbody v-for="user in data" :key="user.username">
+                        <tbody v-for="users in data" :key="users.username">
                             <tr>
-                            <td>{{user.nama}}</td>
-                            <td>{{user.no_hp}}</td>
-                            <td>{{user.asal_sekolah}}</td>
-                            <td>{{user.alamat}}</td>
-                            <td>{{user.username}}</td>
-                            <td>{{user.password}}</td>
+                            <td>{{users.nama}}</td>
+                            <td>{{users.no_hp}}</td>
+                            <td>{{users.asal_sekolah}}</td>
+                            <td>{{users.alamat}}</td>
+                            <td>{{users.username}}</td>
+                            <td>{{users.password}}</td>
                             <td><button type="button" class="btn btn-danger">Delete</button></td>
                             </tr>
                         </tbody>
@@ -70,11 +70,11 @@
                     <hr class="my-4">
                     
                         <label for="mapel">Mata Pelajaran </label>
-                        <input type="text" v-model=data.nama_mapel class="form-input" name="nama_mapel"/><br><br>
+                        <input type="text" v-model=datas.nama_mapel class="form-input" name="nama_mapel"/><br><br>
                         <label for="mapel"> Hari Les</label>
-                        <input type="text" v-model=data.hari class="form-input" name="hari"/><br><br>
+                        <input type="text" v-model=datas.hari class="form-input" name="hari"/><br><br>
                         <label for="mapel">Waktu </label>
-                        <input type="text" v-model=data.jam class="form-input" name="jam"/>
+                        <input type="text" v-model=datas.jam class="form-input" name="jam"/>
                         <br><br>
                         <button type="submit" class="button is-link" :class="{'is-loading':load}">Simpan</button>
                     </form>
@@ -88,12 +88,14 @@
 export default {
     data(){
         return{
-            data:({
+            data:{
+            },
+            datas:{
                 nama_mapel:'',
                 hari:'',
                 jam:''
-            }),
-            user:[],
+            },
+            users:[],
             load:false,
         }
     },
@@ -118,11 +120,11 @@ export default {
         },
         createJadwal(){
             let url="/api/jadwal";
-            axios.post(url,this.data).then((response) => {
+            axios.post(url,this.datas).then((response) => {
                 this.load = false;
                 this.$router.push({ name: 'Admin' })
                 alert('Jadwal berhasil ditambahkan ! ');
-                this.data='';
+                this.datas='';
             }).catch(error => {
                 this.$toast.open({
                     duration: 2000,
