@@ -51851,28 +51851,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            data: [],
-            info: {
-                username: '',
-                password: '',
-                nama: '',
-                alamat: '',
-                no_hp: '',
-                asal_sekolah: '',
-                email: ''
-            },
-            load: false
+            data: []
         };
     },
     created: function created() {
@@ -51889,24 +51872,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.data = response.data;
             }).catch(function (error) {
                 _this.$toast.open({
-                    duration: 2000,
-                    message: error,
-                    position: 'is-bottom',
-                    type: 'is-danger',
-                    queue: false
-                });
-            });
-        },
-        createUser: function createUser() {
-            var _this2 = this;
-
-            var url = "/api/user";
-            axios.post(url, this.info).then(function (response) {
-                _this2.load = false;
-                _this2.$router.push({ name: 'Profile' });
-                alert('User berhasil ditambahkan ! ');
-            }).catch(function (error) {
-                _this2.$toast.open({
                     duration: 2000,
                     message: error,
                     position: 'is-bottom',
@@ -52105,7 +52070,42 @@ var render = function() {
     _vm._v(" "),
     _vm._m(14),
     _vm._v(" "),
-    _vm._m(15)
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: { id: "tambahJadwal", role: "dialog" }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(15),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("form", [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "sel1" } }, [
+                    _vm._v("Pilih Mata Pelajaran")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    { staticClass: "form-control", attrs: { id: "sel1" } },
+                    _vm._l(_vm.data, function(data) {
+                      return _c("option", { key: data.nama_mapel }, [
+                        _vm._v(_vm._s(data.nama_mapel))
+                      ])
+                    })
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(16)
+          ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -52416,8 +52416,6 @@ var staticRenderFns = [
           _c("table", { attrs: { cellspacing: "0" } }, [
             _c("thead", [
               _c("tr", [
-                _c("th", [_vm._v("No")]),
-                _vm._v(" "),
                 _c("th", [_vm._v("Mata Pelajaran")]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Hari")]),
@@ -52430,8 +52428,6 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("tbody", [
               _c("tr", [
-                _c("td", [_vm._v("1")]),
-                _vm._v(" "),
                 _c("td", [_vm._v("Matematika")]),
                 _vm._v(" "),
                 _c("td", [_vm._v("Senin")]),
@@ -52451,8 +52447,6 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("tr", [
-                _c("td", [_vm._v("2")]),
-                _vm._v(" "),
                 _c("td", [_vm._v("Bahasa Indonesia")]),
                 _vm._v(" "),
                 _c("td", [_vm._v("Selasa")]),
@@ -52472,8 +52466,6 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("tr", [
-                _c("td", [_vm._v("3")]),
-                _vm._v(" "),
                 _c("td", [_vm._v("Bahasa Inggris")]),
                 _vm._v(" "),
                 _c("td", [_vm._v("Rabu")]),
@@ -52525,77 +52517,44 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: { id: "tambahJadwal", role: "dialog" }
-      },
-      [
-        _c("div", { staticClass: "modal-dialog" }, [
-          _c("div", { staticClass: "modal-content" }, [
-            _c("div", { staticClass: "modal-header" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "close",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [_vm._v("×")]
-              ),
-              _vm._v(" "),
-              _c("h4", { staticClass: "modal-title" }, [
-                _vm._v("  Tambah Jadwal Les  ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c("form", [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "sel1" } }, [
-                    _vm._v("Pilih Mata Pelajaran")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    { staticClass: "form-control", attrs: { id: "sel1" } },
-                    [
-                      _c("option", [_vm._v("Bahasa Indonesia")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("Fisika")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("Bahasa Inggris")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("Matematika")])
-                    ]
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-footer" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-success",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [_vm._v("Tambah Jadwal")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [_vm._v("Batal")]
-              )
-            ])
-          ])
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("×")]
+      ),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title" }, [
+        _vm._v("  Tambah Jadwal Les  ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Tambah Jadwal")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-default",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Batal")]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -52746,24 +52705,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -52773,22 +52714,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 hari: '',
                 jam: ''
             },
+            user: [],
             load: false
         };
     },
+    created: function created() {
+        this.getUser();
+    },
 
     methods: {
-        createJadwal: function createJadwal() {
+        getUser: function getUser() {
             var _this = this;
+
+            var url = "/api/user";
+            axios.get(url).then(function (response) {
+                console.log(response);
+                _this.data = response.data;
+            }).catch(function (error) {
+                _this.$toast.open({
+                    duration: 2000,
+                    message: error,
+                    position: 'is-bottom',
+                    type: 'is-danger',
+                    queue: false
+                });
+            });
+        },
+        createJadwal: function createJadwal() {
+            var _this2 = this;
 
             var url = "/api/jadwal";
             axios.post(url, this.data).then(function (response) {
-                _this.load = false;
-                _this.$router.push({ name: 'Admin' });
+                _this2.load = false;
+                _this2.$router.push({ name: 'Admin' });
                 alert('Jadwal berhasil ditambahkan ! ');
-                _this.data = '';
+                _this2.data = '';
             }).catch(function (error) {
-                _this.$toast.open({
+                _this2.$toast.open({
                     duration: 2000,
                     message: error,
                     position: 'is-bottom',
@@ -52862,7 +52824,40 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm._m(3),
+    _c("section", { staticClass: "bg-primary", attrs: { id: "verif" } }, [
+      _c("div", { staticClass: "col-lg-8 mx-auto text-center" }, [
+        _vm._m(3),
+        _vm._v(" "),
+        _c(
+          "table",
+          { attrs: { cellspacing: "0" } },
+          [
+            _vm._m(4),
+            _vm._v(" "),
+            _vm._l(_vm.data, function(user) {
+              return _c("tbody", { key: user.username }, [
+                _c("tr", [
+                  _c("td", [_vm._v(_vm._s(user.nama))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.no_hp))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.asal_sekolah))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.alamat))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.username))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.password))]),
+                  _vm._v(" "),
+                  _vm._m(5, true)
+                ])
+              ])
+            })
+          ],
+          2
+        )
+      ])
+    ]),
     _vm._v(" "),
     _c("section", { attrs: { id: "mapel" } }, [
       _c("div", [
@@ -53042,149 +53037,51 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "section",
-      { staticClass: "bg-primary", attrs: { id: "verif" } },
-      [
-        _c("div", { staticClass: "col-lg-8 mx-auto text-center" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-8 mx-auto text-center" }, [
-              _c("br"),
-              _vm._v(" "),
-              _c("h2", { staticClass: "section-heading text-white" }, [
-                _vm._v("Data Siswa Bimbel AHA! ")
-              ]),
-              _vm._v(" "),
-              _c("hr", { staticClass: "light my-4" })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("table", { attrs: { cellspacing: "0" } }, [
-            _c("thead", [
-              _c("tr", [
-                _c("th", [_vm._v("No")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Nama")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("No Hp")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Biaya yang harus dibayarkan")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Keterangan")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Action")]),
-                _vm._v(" "),
-                _c("th")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tbody", [
-              _c("tr", [
-                _c("td", [_vm._v("1")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Setiawan")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("087589455612")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("200000")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Belum Lunas")]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger",
-                      attrs: { type: "button" }
-                    },
-                    [_vm._v("Delete")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success",
-                      attrs: { type: "button" }
-                    },
-                    [_vm._v("Verifikasi")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("2")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Sinta")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("087777455612")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("100000")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Lunas")]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger",
-                      attrs: { type: "button" }
-                    },
-                    [_vm._v("Delete")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success",
-                      attrs: { type: "button" }
-                    },
-                    [_vm._v("Verifikasi")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("3")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Chrsitian")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("087777712612")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("100000")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Lunas")]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger",
-                      attrs: { type: "button" }
-                    },
-                    [_vm._v("Delete")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success",
-                      attrs: { type: "button" }
-                    },
-                    [_vm._v("Verifikasi")]
-                  )
-                ])
-              ])
-            ])
-          ])
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-8 mx-auto text-center" }, [
+        _c("br"),
+        _vm._v(" "),
+        _c("h2", { staticClass: "section-heading text-white" }, [
+          _vm._v("Data Siswa Bimbel AHA! ")
+        ]),
+        _vm._v(" "),
+        _c("hr", { staticClass: "light my-4" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Nama")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("No Hp")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Asal Sekolah")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Alamat")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Username")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Password")]),
+        _vm._v(" "),
+        _c("th")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "button",
+        { staticClass: "btn btn-danger", attrs: { type: "button" } },
+        [_vm._v("Delete")]
+      )
+    ])
   }
 ]
 render._withStripped = true

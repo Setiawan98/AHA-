@@ -10,4 +10,9 @@ class Jadwal extends Model
     protected $table = 'jadwals';
     protected $primaryKey = 'id_jadwal';
     protected $fillable = ['nama_mapel','hari','jam'];
+
+    public function user(){
+        return $this->belongsToMany('App\User','jadwal_users','jadwal_id' ,'user_id');
+    }
+
 }

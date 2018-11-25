@@ -12,4 +12,8 @@ class User extends Model
     protected $fillable = ['username','password','nama','alamat',
                             'no_hp','asal_sekolah','email','verif_email'];
 
+    public function jadwal(){
+        return $this->belongsToMany('App\Jadwal','jadwal_users','user_id','jadwal_id');
+    }
+
 }

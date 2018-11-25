@@ -36,42 +36,24 @@
             <table cellspacing='0'>
                          <thead>
                             <tr>
-                            <th>No</th>
                             <th>Nama</th>
                             <th>No Hp</th>
-                            <th>Biaya yang harus dibayarkan</th>
-                            <th>Keterangan</th>
-                            <th>Action</th>
+                            <th>Asal Sekolah</th>
+                            <th>Alamat</th>
+                            <th>Username</th>
+                            <th>Password</th>
                             <th></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody v-for="user in data" :key="user.username">
                             <tr>
-                            <td>1</td>
-                            <td>Setiawan</td>
-                            <td>087589455612</td>
-                            <td>200000</td>
-                            <td>Belum Lunas</td>
+                            <td>{{user.nama}}</td>
+                            <td>{{user.no_hp}}</td>
+                            <td>{{user.asal_sekolah}}</td>
+                            <td>{{user.alamat}}</td>
+                            <td>{{user.username}}</td>
+                            <td>{{user.password}}</td>
                             <td><button type="button" class="btn btn-danger">Delete</button></td>
-                            <td><button type="button" class="btn btn-success">Verifikasi</button></td>
-                            </tr>
-                            <tr>
-                            <td>2</td>
-                            <td>Sinta</td>
-                            <td>087777455612</td>
-                            <td>100000</td>
-                            <td>Lunas</td>
-                            <td><button type="button" class="btn btn-danger">Delete</button></td>
-                            <td><button type="button" class="btn btn-success">Verifikasi</button></td>
-                            </tr>
-                            <tr>
-                            <td>3</td>
-                            <td>Chrsitian</td>
-                            <td>087777712612</td>
-                            <td>100000</td>
-                            <td>Lunas</td>
-                            <td><button type="button" class="btn btn-danger">Delete</button></td>
-                            <td><button type="button" class="btn btn-success">Verifikasi</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -111,10 +93,29 @@ export default {
                 hari:'',
                 jam:''
             }),
+            user:[],
             load:false,
         }
     },
+    created(){
+        this.getUser();
+    },
     methods:{
+        getUser(){
+            let url="/api/user";
+            axios.get(url).then((response) => {
+                console.log(response);
+                this.data = response.data;
+            }).catch(error => {
+                this.$toast.open({
+                    duration: 2000,
+                    message: error,
+                    position: 'is-bottom',
+                    type: 'is-danger',
+                    queue: false,
+                })
+            });
+        },
         createJadwal(){
             let url="/api/jadwal";
             axios.post(url,this.data).then((response) => {
@@ -131,8 +132,7 @@ export default {
                     queue: false,
                 })
             });
-            
-        }
+        }  
     }
 }
 </script>

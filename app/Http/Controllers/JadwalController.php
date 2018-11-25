@@ -53,11 +53,12 @@ class JadwalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show($id_mapel)
-    // {
-    //     $jadwals=Jadwal::find($id_mapel);
-    //     return view ('jadwalCRUD.show',compact('jadwals'));
-    // }
+
+    public function show($id)
+    {
+        $jadwals = Jadwal::findOrFail($id);
+        return $jadwals;
+    }
 
     /**
      * Show the form for editing the specified resource.
