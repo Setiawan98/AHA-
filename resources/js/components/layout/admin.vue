@@ -121,6 +121,7 @@ export default {
                 this.load = false;
                 this.$router.push({ name: 'Admin' })
                 alert('Jadwal berhasil ditambahkan ! ');
+                this.data='';
             }).catch(error => {
                 this.$toast.open({
                     duration: 2000,

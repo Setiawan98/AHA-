@@ -85,29 +85,30 @@
                         <img :src="'./images/profil.png'" width="200" height="200"><br><br>  
                         <button type="button" class="btn btn-success">Add Image</button>
                         <div class="form-group">
-                            <br><input type="text" class="form-input" name="nama" placeholder="Nama Anda"/>
+                            <br><input type="text" v-model=data.nama class="form-input" name="nama" placeholder="Nama Anda"/>
                         </div>
                         <div class="form-group">
-                            <input type="number" class="form-input" name="no_hp" placeholder="No Hp"/>
+                            <input type="text" v-model=data.no_hp class="form-input" name="no_hp" placeholder="No Hp"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="alamat" placeholder="Alamat"/>
+                            <input type="text" v-model=data.alamat class="form-input" name="alamat" placeholder="Alamat"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="asal_sekolah" placeholder="Asal Sekolah"/>
+                            <input type="text" v-model=data.asal_sekolah class="form-input" name="asal_sekolah" placeholder="Asal Sekolah"/>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" name="email" placeholder="Email"/>
+                            <input type="email" v-model=data.email class="form-input" name="email" placeholder="Email"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="username" placeholder="Username"/>
+                            <input type="text" v-model=data.username class="form-input" name="username" placeholder="Username"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="password" placeholder="Password"/>
+                            <input type="password" v-model=data.password class="form-input" name="password" placeholder="Password"/>
                         <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-input" name="cnf_psw" placeholder="Repeat your password"/>
+                            <input type="password" v-model=data.cnf_psw class="form-input" name="cnf_psw" placeholder="Repeat your password"/>
+                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="button is-link" :class="{'is-loading':load}" value="Sign up"/>
@@ -239,7 +240,7 @@ export default {
                 alamat:'',
                 no_hp:'',
                 asal_sekolah:'',
-                email:''
+                email:'',
             }),
             load:false,
         }
@@ -262,6 +263,7 @@ export default {
                 this.load = false;
                 this.$router.push({ name: 'HomeLayout' })
                 alert('User berhasil ditambahkan ! ');
+                this.data='';
             }).catch(error => {
                 this.$toast.open({
                     duration: 2000,
